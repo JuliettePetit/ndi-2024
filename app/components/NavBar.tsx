@@ -3,20 +3,20 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import { Menu, Package2} from "lucide-react";
+import { Menu, Package2 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 const NavLinks = [
     { id: 1, name: 'Home', path: '/' },
-    { id: 2, name: 'Le bar', path: '/bar' },
+    { id: 2, name: 'Podcast', path: '/podcast' },
     { id: 3, name: 'Contact', path: '/contact' },
 ];
 
 export default function NavBar() {
 
 
-  const pathname = usePathname();
-  const isActive = (path: string) => path === pathname;
+    const pathname = usePathname();
+    const isActive = (path: string) => path === pathname;
 
     return (
         <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
@@ -26,21 +26,21 @@ export default function NavBar() {
                     href={"/"}
                     className="flex items-center gap-2 text-lg font-semibold"
                 >
-                    <Package2 className="h-6 w-6"/>
+                    <Package2 className="h-6 w-6" />
                     <span className="sr-only">Acme Inc</span>
                 </Link>
 
-                    {NavLinks.map((link) => (
+                {NavLinks.map((link) => (
 
-                            <Link
-                                key={link.id}
-                                href={link.path}
-                                className={isActive(link.path) ? 'text-foreground transition-colors' : 'text-muted-foreground hover:text-primary transition-colors'}
-                            >
-                                    {link.name}
-                            </Link>
+                    <Link
+                        key={link.id}
+                        href={link.path}
+                        className={isActive(link.path) ? 'text-foreground transition-colors' : 'text-muted-foreground hover:text-primary transition-colors'}
+                    >
+                        {link.name}
+                    </Link>
 
-                    ))}
+                ))}
 
             </nav>
             <div className="ml-auto flex items-center">
@@ -51,7 +51,7 @@ export default function NavBar() {
                             size="icon"
                             className="shrink-0 md:hidden"
                         >
-                            <Menu className="h-5 w-5"/>
+                            <Menu className="h-5 w-5" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
@@ -61,7 +61,7 @@ export default function NavBar() {
                                 href={"/"}
                                 className="flex items-center gap-2 text-lg font-semibold"
                             >
-                                <Package2 className="h-6 w-6"/>
+                                <Package2 className="h-6 w-6" />
                                 <span className="sr-only">Acme Inc</span>
                             </Link>
 
@@ -69,7 +69,7 @@ export default function NavBar() {
                                 <Link
                                     key={link.id}
                                     href={link.path}
-                                    className={isActive(link.path)? 'text-foreground transition-colors' : 'text-muted-foreground hover:text-primary transition-colors'}
+                                    className={isActive(link.path) ? 'text-foreground transition-colors' : 'text-muted-foreground hover:text-primary transition-colors'}
                                 >
                                     {link.name}
                                 </Link>

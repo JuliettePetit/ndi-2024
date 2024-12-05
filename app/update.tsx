@@ -1,3 +1,5 @@
+type UserChoice = 'yes' | 'no' | 'ok';
+
 interface EventDesc {
   human_desc: string,
   ocean_desc: string,

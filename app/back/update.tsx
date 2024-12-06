@@ -1,11 +1,22 @@
-import { BodyPropBack, MapPropBack, ResponseToChoiceEvent, Stats, SvgPropBack, UpdateResponse, ConsequenceSeuil, ZoneHuman, ZoneOcean } from "@/lib/types";
+import {
+  BodyPropBack,
+  MapPropBack,
+  ResponseToChoiceEvent,
+  Stats,
+  SvgPropBack,
+  UpdateResponse,
+  ConsequenceSeuil,
+  ZoneHuman,
+  ZoneOcean,
+  GeoEvent
+} from "@/lib/types";
 import { allEvents, human_stats, ocean_stats } from "./datas";
-//
-// const add_stats = (stat: Stats, other: Stats) => {
-//   for (const key in other) {
-//     stat[key] += other[key];
-//   }
-// }
+
+const add_stats = (stat: Stats, other: Stats) => {
+  for (const key in other) {
+    stat[key] += other[key];
+  }
+}
 
 const enough_stat = (stat: Stats, other: Stats, key: string) => {
   return stat[key] >= other[key];
@@ -107,8 +118,12 @@ function buildMapProp() : SvgPropBack {
 }
 
 
-function applyTransition() {
+function applyTransition(r: ResponseToChoiceEvent, pE: GeoEvent) {
   // tree thingy for events
+  if (r == "yes") {
+    add_stats(human_stats, pE.consequence.human_changes);
+    add_stats(ocean_stats, pE.consequence.ocean_changes);
+  }
 }
 
 function getCriticalState(): ConsequenceSeuil | null {
@@ -187,6 +202,7 @@ function getCriticalState(): ConsequenceSeuil | null {
 }
 
 export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
+  console.log(human_stats);
   const res: UpdateResponse = {
     consequenceSeuil: null,
     event: undefined,
@@ -195,11 +211,12 @@ export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   // check to apply transition
   if (r !== null && curEventIndex > 0) {
     answeredLastUpdate = true;
-    const prevOpt = allEvents[curEventIndex - 1].option;
+    const prevEvent = allEvents[curEventIndex - 1];
+    const prevOpt = prevEvent.option;
     if (prevOpt == "YesNoChoice" && (r == 'yes' || r == 'no'))
-      applyTransition();
+      applyTransition(r, prevEvent);
     else if (prevOpt == "AcceptChoice" && r == "ok")
-      applyTransition();
+      applyTransition(r, prevEvent);
     else {
       isGameOver = true;
       return res; // bro this is wrong state

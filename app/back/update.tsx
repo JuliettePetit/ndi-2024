@@ -154,8 +154,8 @@ function getCriticalState(): ConsequenceSeuil | null {
           cs = {
             oceanOrigin: ZoneOcean.CORAL_BARRER,
             humanOrigin: ZoneHuman.BONE,
-            oceanProblem: '+ de catastrophe (impact des mouvements maritimes moins retenus) + destruction écosystème (refuge pour de nombreux poissons) + grosse source d\'O2 réduite, ...',
-            humanProblemAnalogy: 'Protection Immunitaire - Maladies'
+            oceanProblem: 'L\intoxication des océans provoque une détérioration des massifs de corail, une des sources de biodiversité les plus importante. De plus la contamination des eaux accrue les chance de catastrophe, en effet la perte de massif coralien réduit la diminution des catastrophes. Les massifs n\étant plus là pour les retenir. De même, le phytoplancton ont moins d\'habitats naturels, les empêchant de produire du dioxygène.',
+            humanProblemAnalogy: 'Comme les massifs coraliens, le système immunitaire sert de barrière contre les bactéries et perturbations extérieures.'
           };
           break;
         }
@@ -163,11 +163,8 @@ function getCriticalState(): ConsequenceSeuil | null {
           cs = {
             oceanOrigin: ZoneOcean.STREAM,
             humanOrigin: ZoneHuman.HEART,
-            oceanProblem: 'circulation océanique impacte la régulation du climat. A cause du réchauffement climatique, les calottes glaciaires augmentent la quantité d\'eau douce dans l\'océan. Cela ralentit la circulation globale des flux maritimes en empêchant la formation d\'eau profonde.\n' +
-              '\n' +
-              'De plus,\n' +
-              '\n' +
-              'Les conséquences son très mauvaises, car cela diminuerait le carbone et la chaleur absorbés par les océans, et donc accélérer le réchauffement climatique. De plus, Une boucle sans fin.',
+            oceanProblem: 'circulation océanique impacte la régulation du climat. A cause du réchauffement climatique, les calottes glaciaires augmentent la quantité d\'eau douce dans l\'océan. Cela ralentit la circulation globale des flux maritimes en empêchant la formation d\'eau profonde.' +
+              'De plus, les conséquences son très mauvaises, car cela diminuerait le carbone et la chaleur absorbés par les océans, et donc accélérer le réchauffement climatique. De plus, Une boucle sans fin.',
             humanProblemAnalogy: 'On peut comparer les flux maritimes avec les flux sanguins du corps. Si le débit de circulation sanguine du corps est réduit, cela peut entraîner des problèmes cardiaques et des complications.'
           };
           break;

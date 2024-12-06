@@ -4,18 +4,24 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator";
 import StatComponent from "@/app/components/StatComponent";
-import { SliderData } from "@/lib/types";
+import HumanBody from "@/components/ui/HumanBody";
+import EarthBody from "@/components/ui/EarthBody";
+import {DialogInfo, SliderData, SvgPropBack} from "@/lib/types";
 
 interface Prop {
     isEarth: boolean;
     switchCallback: (state: boolean) => void;
-    stats: SliderData[]
+    stats: SliderData[];
+    svgs: SvgPropBack | null;
+    setPart: (part: DialogInfo | null) => void;
+    setOpenPart: (state: boolean) => void;
 }
 
-export default function GamePage({ isEarth, switchCallback, stats }: Prop) {
+export default function GamePage({ isEarth, switchCallback, stats, svgs, setPart, setOpenPart }: Prop) {
     const history = Array.from({ length: 50 }).map(
         (_, i, a) => `action ${a.length - i}`
     )
+    const openPart = (info: DialogInfo | undefined) => {setPart(info || null); setOpenPart(true);}
     return (
         <div>
             <div className={"gap-2 grid grid-cols-1 lg:grid-cols-3"}>
@@ -27,7 +33,15 @@ export default function GamePage({ isEarth, switchCallback, stats }: Prop) {
                             <PageSwitch onCheckedChange={switchCallback} defaultChecked={isEarth} />
                         </CardTitle>
                         <CardContent>
-                            <p>svg</p>
+                            {isEarth
+                            ? <EarthBody coralBarrer={{color: svgs?.map.coralBarrer.color, callback: () => openPart(svgs?.map.coralBarrer.dialogInfo)}}
+                                         stream={{color: svgs?.map.stream.color, callback: () => openPart(svgs?.map.stream.dialogInfo)}}
+                                         CO2={{color: svgs?.map.CO2.color, callback: () => openPart(svgs?.map.CO2.dialogInfo)}}
+                                         acidity={{color: svgs?.map.acidity.color, callback: () => openPart(svgs?.map.acidity.dialogInfo)}}/>
+                            : <HumanBody bone={{color: svgs?.body.bone.color, callback: () => openPart(svgs?.body.bone.dialogInfo)}}
+                                         heart={{color: svgs?.body.heart.color, callback: () => openPart(svgs?.body.heart.dialogInfo)}}
+                                         lungs={{color: svgs?.body.lungs.color, callback: () => openPart(svgs?.body.lungs.dialogInfo)}}
+                                         vein={{color: svgs?.body.vein.color, callback: () => openPart(svgs?.body.vein.dialogInfo)}}/>}
                         </CardContent>
                     </Card>
                 </div>

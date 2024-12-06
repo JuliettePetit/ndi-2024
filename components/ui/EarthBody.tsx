@@ -8,13 +8,13 @@ interface MapPart {
 }
 
 interface MapProp {
-  acidity?: MapPart;
-  CO2?: MapPart;
+  acidity: MapPart;
+  CO2: MapPart;
   coralBarrer: MapPart;
   stream: MapPart;
 }
 
-export default function Earth({ acidity, CO2, coralBarrer, stream }: MapProp) {
+export default function EarthBody({ acidity, CO2, coralBarrer, stream }: MapProp) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
       <g>

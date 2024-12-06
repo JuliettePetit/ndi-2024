@@ -10,13 +10,16 @@ import {
     DialogTitle
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { GeoEvent, ResponseToChoiceEvent, SliderData } from "@/lib/types";
+import {GeoEvent, ResponseToChoiceEvent, SvgPropBack, SliderData, DialogInfo} from "@/lib/types";
 import { update } from "./back/update";
 
 export default function Home() {
     const [isEarth, setIsEarth] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenPart, setIsOpenPart] = useState(false);
+    const [part, setPart] = useState(null as DialogInfo | null);
     const [geoEvent, setEvent] = useState(null as GeoEvent | null);
+    const [svgInfo, setSvgInfo] = useState(null as SvgPropBack | null);
     const [oceanStats, setOceanStats] = useState([] as SliderData[]);
     const [humanStats, setHumanStats] = useState([] as SliderData[]);
     const isChek: ((checked: boolean) => void) = (s: boolean) => setIsEarth(s);
@@ -45,19 +48,20 @@ export default function Home() {
                 data: res.human_stats[k],
                 name: k
             } as SliderData)));
+        setSvgInfo(res.svgs);
     }
 
 
     useEffect(() => {
         const id = setInterval(() => {
-            if (!isOpen) {
+            if (!isOpen && !isOpenPart) {
                 // call Back
                 // update stats
                 handleUpdate(null);
             }
         }, 1000); // each second
         return () => clearInterval(id);
-    }, [isOpen, geoEvent])
+    }, [isOpen, geoEvent, isOpenPart])
 
     const accept = () => { handleUpdate("yes"); };
     const refuse = () => { handleUpdate("no"); };
@@ -65,8 +69,14 @@ export default function Home() {
 
     return (
         <div className={"p-2"}>
-            <h1 className={"font-extrabold text-2xl"}>{isEarth ? "EARTH" : "HUMAN"}</h1>
-            <GamePage isEarth={isEarth} switchCallback={isChek} stats={isEarth ? oceanStats : humanStats} />
+            <h1 className={"font-extrabold text-2xl"}>{isEarth ? "TERRE" : "HUMAIN"}</h1>
+            <GamePage isEarth={isEarth}
+                      switchCallback={isChek}
+                      stats={isEarth ? oceanStats : humanStats}
+                      svgs={svgInfo}
+                      setPart={setPart}
+                      setOpenPart={setIsOpenPart}
+            />
             <Dialog open={isOpen}>
                 <DialogContent onEscapeKeyDown={event => event.preventDefault()} onPointerDownOutside={event => event.preventDefault()}>
                     <DialogHeader>
@@ -81,6 +91,19 @@ export default function Home() {
                                 ? <><Button variant={"outline"} onClick={refuse}>Non</Button><Button onClick={accept}>Oui</Button></>
                                 : <><Button onClick={ok}>Ok</Button></>
                         }
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+            <Dialog open={isOpenPart}>
+                <DialogContent onEscapeKeyDown={event => event.preventDefault()} onPointerDownOutside={event => event.preventDefault()}>
+                    <DialogHeader>
+                        <DialogTitle>{part?.title || ""}</DialogTitle>
+                        <DialogDescription>
+                            {part?.description || ""}
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <Button onClick={() => setIsOpenPart(false)}>Fermer</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

@@ -3,9 +3,8 @@ import { PageSwitch } from "@/app/components/PageSwitch";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator";
-import { Key, useState } from "react";
+import { useState } from "react";
 import StatComponent from "@/app/components/StatComponent";
-import { ColoredSlider } from "./ColoredSlider";
 import { SliderData } from "@/lib/types";
 
 interface Prop {

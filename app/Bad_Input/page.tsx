@@ -7,7 +7,7 @@ export default function CustomInput() {
     const [currentChar, setCurrentChar] = useState("A");
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [countdown, setCountdown] = useState(3);
-    const [yesCountdown, setYesCountdown] = useState(null);
+    const [yesCountdown, setYesCountdown] = useState(null as number | null);
     const [selectorPosition, setSelectorPosition] = useState({ top: 200, left: 200 });
     const [isBlockingPopupVisible, setIsBlockingPopupVisible] = useState(false);
 
@@ -48,11 +48,11 @@ export default function CustomInput() {
     };
 
     useEffect(() => {
-        let timer;
+        let timer: NodeJS.Timeout;
         if (isPopupVisible && countdown > 0) {
             timer = setTimeout(() => setCountdown(countdown - 1), 1000);
         }
-        return () => clearTimeout(timer);
+        return () => clearTimeout(timer );
     }, [countdown, isPopupVisible]);
 
     const handleYesClick = () => {
@@ -60,7 +60,7 @@ export default function CustomInput() {
     };
 
     useEffect(() => {
-        let yesTimer;
+        let yesTimer: NodeJS.Timeout;
         if (yesCountdown !== null && yesCountdown > 0) {
             yesTimer = setTimeout(() => setYesCountdown(yesCountdown - 1), 1000);
         } else if (yesCountdown === 0) {
@@ -104,21 +104,21 @@ export default function CustomInput() {
                 className="absolute flex flex-col items-center bg-gray-100 p-4 rounded shadow-md"
                 style={{ top: selectorPosition.top, left: selectorPosition.left }}
             >
-                <button 
-                    onClick={incrementChar} 
-                    className="text-2xl font-bold text-black" 
+                <button
+                    onClick={incrementChar}
+                    className="text-2xl font-bold text-black"
                 >
                     ▲
                 </button>
-                <div 
-                    className="text-2xl font-semibold my-2" 
+                <div
+                    className="text-2xl font-semibold my-2"
                     style={{ color: 'black' }}
                 >
                     {currentChar}
                 </div>
-                <button 
-                    onClick={decrementChar} 
-                    className="text-2xl font-bold" 
+                <button
+                    onClick={decrementChar}
+                    className="text-2xl font-bold"
                     style={{ color: 'black' }}
                 >
                     ▼

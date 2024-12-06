@@ -61,8 +61,8 @@ export default function GamePage({ isEarth, switchCallback, stats, svgs, setPart
                         </CardTitle>
                         <CardContent>
                             <ScrollArea className={"h-72"}>
-                                {history.map((it: string) => (
-                                    <div key={it}>
+                                {history.map((it: string, index: number) => (
+                                    <div key={index}>
                                         {it}
                                         <Separator />
                                     </div>

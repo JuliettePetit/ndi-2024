@@ -1,17 +1,17 @@
 import { Stats, GeoEvent} from "@/lib/types";
 
 export const human_stats: Stats = {
-  "ph sanguin": 100,
-  "% CO2 filtré par les poumons": 100,
-  "nb globules blancs par microlitre (de sang)": 100,
-  "bpm": 100,
+  "ph sanguin": 7.4,
+  "% CO2 filtré par les poumons": 98,
+  "nb globules blancs par microlitre (de sang)": 9000,
+  "bpm": 90,
 };
 
 export const ocean_stats: Stats = {
-  "ph" : 0,
-  "% CO2 absorbable par les mers": 100,
-  "% substances toxiques": 100,
-  "delta température flux marins" : 100,
+  "ph" : 8.1,
+  "% CO2 absorbable par les mers": 60,
+  "% substances toxiques": 8,
+  "delta température flux marins" : 0.,
 };
 
 export const allEvents: GeoEvent[] = [

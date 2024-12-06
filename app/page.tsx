@@ -10,7 +10,7 @@ import {
     DialogTitle
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
-import {Event as GeoEvent} from "@/lib/types";
+import {GeoEvent} from "@/lib/types";
 
 export default function Home() {
     const [isEarth, setIsEarth] = useState(false);

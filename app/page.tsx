@@ -22,6 +22,7 @@ export default function Home() {
     const [geoEvent, setEvent] = useState(null as GeoEvent | null);
     // Body part
     const [isOpenPart, setIsOpenPart] = useState(false);
+    const [money, setMoney] = useState(50_000_000_000);
     const [part, setPart] = useState(null as DialogInfo | null);
     // Consequence
     const [isConsOpen, setIsConsOpen] = useState(false);
@@ -39,8 +40,8 @@ export default function Home() {
             setEvent(res.event);
             setHistory([...[`Event: #${res.event.id} - ${res.event.title}`, ...history]])
             setIsOpen(true);
-        }
-        else {
+            setMoney(res.balance);
+        } else {
             setIsOpen(false);
         }
         if(res.consequenceSeuil != null) {
@@ -98,6 +99,7 @@ export default function Home() {
             setPart={setPart}
             setOpenPart={setIsOpenPart}
             history={history}
+            money={money}
             />
             <Dialog open={isOpen}>
                 <DialogContent onEscapeKeyDown={event => event.preventDefault()} onPointerDownOutside={event => event.preventDefault()}>

@@ -14,6 +14,7 @@ export const ocean_stats: Stats = {
   "delta température flux marins" : 0.,
 };
 
+
 export const allEvents: GeoEvent[] = [
   {
     id: 1,
@@ -21,7 +22,7 @@ export const allEvents: GeoEvent[] = [
     description: "Différents événements vont se produire, vous devrez y répondre ou en subir les conséquences. Vous devrez faire attention à bien gérer votre argent tout en faisant attention votre pollution des océans",
     consequence : {
       description: "Vos décisions affecteront la composition chimiques et la biodiversité des océans",
-      can_take: {"money" : 5000000000},
+      can_take: {"money" : 0},
       ocean_changes: {},
       human_changes: {}
     },

@@ -15,10 +15,11 @@ interface Prop {
     svgs: SvgPropBack | null;
     setPart: (part: DialogInfo | null) => void;
     setOpenPart: (state: boolean) => void;
-  history: string[];
+    money: number;
+    history: string[];
 }
 
-export default function GamePage({ isEarth, switchCallback, stats, svgs, setPart, setOpenPart, history }: Prop) {
+export default function GamePage({ isEarth, switchCallback, stats, svgs, setPart, setOpenPart, history, money}: Prop) {
     const openPart = (info: DialogInfo | undefined) => {setPart(info || null); setOpenPart(true);}
     return (
         <div>
@@ -45,6 +46,15 @@ export default function GamePage({ isEarth, switchCallback, stats, svgs, setPart
                 </div>
                 {/* right section */}
                 <div>
+                  <Card className={"p-2"}>
+                      <CardTitle className="mb-5">
+                          Compte en banque
+                      </CardTitle>
+                      <CardContent>
+                        {`Vous avez ${new Intl.NumberFormat("fr-FR", { style: 'currency', currency: "EUR" }).format(money)}`}
+                      </CardContent>
+                  </Card>
+
                     <Card className={"p-2"}>
                         <CardTitle className="mb-5">
                             Statistiques

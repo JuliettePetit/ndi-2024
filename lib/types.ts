@@ -32,7 +32,8 @@ export interface UpdateResponse {
   human_stats: Stats
   gameOver: boolean
   consequenceSeuil: ConsequenceSeuil | null
-  svgs: SvgPropBack
+  svgs: SvgPropBack,
+  balance: number,
 }
 
 export interface GeoEvent {

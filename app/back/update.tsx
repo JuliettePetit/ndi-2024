@@ -28,6 +28,8 @@ const enough_stat = (stat: Stats, other: Stats, key: string) => {
 
 const alreadyOutput: ConsequenceSeuil[] = [];
 
+let balance = 50_000_000_000
+
 const limit_stats : Stats = { // temp
   "ph": 1,
   "% CO2 absorbable par les mers": 10,
@@ -132,7 +134,7 @@ function getCriticalState(): ConsequenceSeuil | null {
     if (!enough_stat(limit_stats, ocean_stats, key)) {
       let cs: ConsequenceSeuil | null = null;
       switch(key) {
-        case "ph" : { 
+        case "ph" : {
           cs = {
             oceanOrigin: ZoneOcean.ACIDITY,
             humanOrigin: ZoneHuman.VEIN,
@@ -141,7 +143,7 @@ function getCriticalState(): ConsequenceSeuil | null {
           };
           break;
         }
-        case "% CO2 absorbable par les mers": { 
+        case "% CO2 absorbable par les mers": {
           cs = {
             oceanOrigin: ZoneOcean.CO2,
             humanOrigin: ZoneHuman.LUNGS,
@@ -150,7 +152,7 @@ function getCriticalState(): ConsequenceSeuil | null {
           };
           break;
         }
-        case "% substances toxiques": { 
+        case "% substances toxiques": {
           cs = {
             oceanOrigin: ZoneOcean.CORAL_BARRER,
             humanOrigin: ZoneHuman.BONE,
@@ -159,7 +161,7 @@ function getCriticalState(): ConsequenceSeuil | null {
           };
           break;
         }
-        case "delta température flux marins" : { 
+        case "delta température flux marins" : {
           cs = {
             oceanOrigin: ZoneOcean.STREAM,
             humanOrigin: ZoneHuman.HEART,
@@ -206,15 +208,22 @@ export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   const res: UpdateResponse = {
     consequenceSeuil: null,
     event: undefined,
-    ocean_stats: ocean_stats, human_stats: human_stats, gameOver: isGameOver, svgs: buildMapProp()};
+    ocean_stats: ocean_stats, human_stats: human_stats, gameOver: isGameOver, svgs: buildMapProp(),
+    balance: balance
+  };
 
   // check to apply transition
   if (r !== null && curEventIndex > 0) {
     answeredLastUpdate = true;
     const prevEvent = allEvents[curEventIndex - 1];
-    const prevOpt = prevEvent.option;
-    if (prevOpt == "YesNoChoice" && (r == 'yes' || r == 'no'))
+    const prevOpt = allEvents[curEventIndex - 1].option;
+    if (prevOpt == "YesNoChoice" && (r == 'yes' || r == 'no')){
+      if (r == 'yes') {
+        balance += allEvents[curEventIndex - 1].consequence.can_take["money"];
+        res.balance = balance;
+      }
       applyTransition(r, prevEvent);
+    }
     else if (prevOpt == "AcceptChoice" && r == "ok")
       applyTransition(r, prevEvent);
     else {

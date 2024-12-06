@@ -15,24 +15,24 @@ function buildMapProp() : SvgPropBack {
     {
       color: ocean_stats['ph'] < 7.6 ? danger_color : "#FFFFFF" ,
       dialogInfo: {
-        title: "phd ou quoi",
-        description: "feur"
+        title: "Acidité de l'océan",
+        description: ocean_stats['ph'] < 7.6 ? "Acidité critique de l'océan !" : "L'acidité de l'océan est normale."
       }
     },
     CO2:
     {
       color: ocean_stats['% CO2 absorbable par les mers'] < 40 ? danger_color : "#FFFFFF" ,
       dialogInfo: {
-        title: "co2",
-        description: "absorc"
+        title: "CO2 absorbable par les mers",
+        description: ocean_stats['% CO2 absorbable par les mers'] < 40 ? "L'océan n'absorbe pas assez de CO2, l'oxygène va se faire manquer ! Résolvez rapidement ce problème !" : "L'absorption en carbone de l'océan est normale."
       }
     },
     coralBarrer:
     {
       color: ocean_stats['% substances toxiques'] > 16 ? danger_color : "#FFFFFF" ,
       dialogInfo: {
-        title: "bitch",
-        description: "toxic"
+        title: "Substances toxiques dans l'océan",
+        description: ocean_stats['% substances toxiques'] > 16 ? "L'océan est gravement pollué ! Vous devez y remédier !" : "L'océan est propre, rien à signaler."
       }
     },
     stream:
@@ -40,7 +40,7 @@ function buildMapProp() : SvgPropBack {
       color: ocean_stats['delta température flux marins'] > 2.5 ? danger_color : "#FFFFFF" ,
       dialogInfo: {
         title: "delta",
-        description: "b^2 - 4ac"
+        description: ocean_stats['delta température flux marins'] > 2.5 ? "La température des flux marins est bien trop instable !" : "L'eau est bien calme, dis capitaine Haddock !"
       }
     },
   };
@@ -50,32 +50,32 @@ function buildMapProp() : SvgPropBack {
     {
       color: (human_stats['ph sanguin'] < 7.2 || human_stats['ph_sanguin'] > 7.6) ? danger_color : "#FFFFFF" ,
       dialogInfo: {
-        title: "Ph sanguin",
-        description: "Le sang du ph mon reuf"
+        title: "PH Sanguin",
+        description: human_stats['ph sanguin'] < 7.2 ? "Le sang s'acidifie ! L'humain est en danger !" : human_stats['ph_sanguin'] > 7.6 ? "Le sang est trop basique ! L'humain est en danger !" : "Le sang de l'humain fonctionne normalement."
       }
     },
     lungs:
     {
       color: human_stats['oxymétrie'] < 94 ? danger_color : "#FFFFFF" ,
       dialogInfo: {
-        title: "No oxygen ?",
-        description: "Just breath"
+        title: "Apport en oxygène de l'humain",
+        description: human_stats['oxymétrie'] < 94 ? "Les poumons de l'humain sont blessés, celui-ci reçoit trop peu d'oxygène !" : "Les poumons de l'humain fonctionnent normalement."
       }
     },
     bone:
     {
       color: human_stats['nb globules blancs par microlitre (de sang)'] < 5000 ? danger_color : "#FFFFFF" ,
       dialogInfo: {
-        title: "Ded",
-        description: "Idk"
+        title: "Nombre de globules blancs (/microlitre de sang)",
+        description: human_stats['nb globules blancs par microlitre (de sang)'] < 5000 ? "Le système immunitaire de l'humain est inefficient ! Il est en danger de maladies dangereuses !" : "Le système immunitaire de l'humain est prêt à combattre les maladies !"
       }
     },
     heart:
     {
       color: human_stats['bpm'] < 70 ? danger_color : "#FFFFFF" ,
       dialogInfo: {
-        title: "Pov: rave",
-        description: "wtf"
+        title: "Battements de coeur par minute",
+        description: human_stats['bpm'] < 70 ? "Le coeur de l'humain bat trop lentement !" : "Le coeur de l'humain fonctionne correctement."
       }
     },
   };

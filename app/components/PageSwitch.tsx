@@ -7,7 +7,7 @@ import UserIcon from '@/components/ui/userIcon';
 
 import { cn } from "@/lib/utils"
 
-const Switch = React.forwardRef<
+const PageSwitch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
 >(({ className, ...props }, ref) => (
@@ -28,6 +28,6 @@ const Switch = React.forwardRef<
     <UserIcon className="group-data-[state=checked]:hidden ml-0.5"></UserIcon>
   </SwitchPrimitives.Root>
 ))
-Switch.displayName = SwitchPrimitives.Root.displayName
+PageSwitch.displayName = SwitchPrimitives.Root.displayName
 
-export { Switch }
+export { PageSwitch }

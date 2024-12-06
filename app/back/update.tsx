@@ -1,21 +1,5 @@
-import { BodyPropBack, MapPropBack, ResponseToChoiceEvent, Stats, SvgPropBack, UpdateResponse } from "@/lib/types";
+import { BodyPropBack, MapPropBack, ResponseToChoiceEvent, SvgPropBack, UpdateResponse } from "@/lib/types";
 import { allEvents, human_stats, ocean_stats } from "./datas";
-import HumanBody from "@/components/ui/humanBody";
-
-const add_stats = (stat: Stats, other: Stats) => {
-  for (const key in other) {
-    stat[key] += other[key];
-  }
-}
-
-const enough_stat = (stat: Stats, other: Stats, key: string) => {
-  return stat[key] >= other[key];
-}
-
-function canMakeChoice(r: ResponseToChoiceEvent) {
-  return true;
-}
-
 
 const resetTimeSecs = 3;
 let curEventIndex = 0;
@@ -100,7 +84,7 @@ function buildMapProp() : SvgPropBack {
 }
 
 
-function applyTransition(choice: ResponseToChoiceEvent) {
+function applyTransition() {
   // tree thingy for events
 }
 
@@ -108,13 +92,13 @@ export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   const res: UpdateResponse = { ocean_stats: ocean_stats, human_stats: human_stats, gameOver: isGameOver, svgs: buildMapProp()};
 
   // check to apply transition
-  if (r !== null && curEventIndex > 0 && canMakeChoice(r)) {
+  if (r !== null && curEventIndex > 0) {
     answeredLastUpdate = true;
     const prevOpt = allEvents[curEventIndex - 1].option;
     if (prevOpt == "YesNoChoice" && (r == 'yes' || r == 'no'))
-      applyTransition(r);
+      applyTransition();
     else if (prevOpt == "AcceptChoice" && r == "ok")
-      applyTransition(r);
+      applyTransition();
     else {
       isGameOver = true;
       return res; // bro this is wrong state
@@ -122,9 +106,6 @@ export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   }
 
   // should we send the next event ?
-  console.log("in update");
-  console.log(answeredLastUpdate);
-  console.log(numCalls);
   if (numCalls >= resetTimeSecs && answeredLastUpdate) {
     answeredLastUpdate = false;
     numCalls = 0;

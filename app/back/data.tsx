@@ -16,12 +16,12 @@ export const allEvents: GeoEvent[] = [
   {
     id: 2,
     title: "Premiers pas",
-    description: "Pour faire tourner ses data Center Microsoft aurait besoin de faire construire une vingtaine de centrale éléctrique tournant aux gaz naturelles. Acceptez vous ?",
+    description: "Pour faire tourner ses data Center Microsoft aurait besoin de faire construire une vingtaine de centrale éléctrique tournant aux gaz naturelles, mais génèrerait des profits conséquents. Acceptez vous ?",
     consequence : {
       description: "Le CO2 s'accumule encore dans les océans, acidifiant légérement les océeans.",
-      can_take: {"money" : -3_000_000},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 20_000_000},
+      ocean_changes: {"ph": -0.12},
+      human_changes: {"ph sanguin": -0.2}
     },
     option: "YesNoChoice"
   },
@@ -31,9 +31,9 @@ export const allEvents: GeoEvent[] = [
     description: "Une entreprise propose de construire des éoliennes offshore. Elles sont coûteuses à installer, mais elles réduisent les émissions de CO2. Acceptez-vous de financer leur construction ?",
     consequence: {
       description: "Moins de CO2 dans l'air signifie une acidification plus lente des océans, préservant ainsi les récifs coralliens.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 700_000_000},
+      ocean_changes: {"% CO2 absorbable par les mers": -3.5},
+      human_changes: {"% CO2 filtré par les poumons": -0.3}
     },
     option: "YesNoChoice"
   },
@@ -43,9 +43,9 @@ export const allEvents: GeoEvent[] = [
     description: "Une nouvelle station balnéaire pourrait stimuler l'économie locale, mais au prix d'un rejet accru de déchets et d'eaux usées dans les océans. Autorisez-vous ce projet ?",
     consequence: {
       description: "La pollution locale augmente, perturbant les écosystèmes côtiers et contribuant à l'accumulation de plastiques dans l'océan.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 120_000_000},
+      ocean_changes: {"% substances toxiques": 3.5 },
+      human_changes: {"nb globules blancs par microlitre (de sang)": -2000}
     },
     option: "YesNoChoice"
   },
@@ -55,9 +55,9 @@ export const allEvents: GeoEvent[] = [
     description: "Pour maintenir des emplois, le gouvernement propose de subventionner des industries utilisant des carburants fossiles. Voulez-vous allouer des fonds à ce projet ?",
     consequence: {
       description: "Une augmentation des émissions de CO2 accentue l'acidification des océans, mettant en danger des espèces sensibles comme les mollusques.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : +50_000_000},
+      ocean_changes: {"ph": -0.2},
+      human_changes: {"ph sanguin": -0.1}
     },
     option: "YesNoChoice"
   },
@@ -67,9 +67,9 @@ export const allEvents: GeoEvent[] = [
     description: "Vous pouvez inciter les compagnies maritimes à adopter des carburants plus propres, ce qui coûtera plus cher au commerce international. Que choisissez-vous ?",
     consequence: {
       description: "Moins de polluants sont déversés dans l'océan, protégeant ainsi les écosystèmes marins côtiers et la vie aquatique.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : -400_000_000},
+      ocean_changes: {"% substances toxiques": -2},
+      human_changes: {"nb globules blancs par microlitre (de sang)": 1000}
     },
     option: "YesNoChoice"
   },
@@ -77,11 +77,12 @@ export const allEvents: GeoEvent[] = [
     id: 7,
     title: "Pêcherie durable ou rendement maximal",
     description: "Les pêcheurs demandent d'exploiter davantage les ressources marines pour répondre à la demande croissante. Acceptez-vous d'autoriser la surpêche ?",
+    // not very valid with the description
     consequence: {
       description: "La biodiversité marine diminue, et les déséquilibres dans les écosystèmes marins aggravent leur fragilité.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 10_000_000},
+      ocean_changes: {"delta température flux marins": 1},
+      human_changes: {"bpm": -10}
     },
     option: "YesNoChoice"
   },
@@ -91,21 +92,21 @@ export const allEvents: GeoEvent[] = [
     description: "Une grande compagnie pétrolière propose un contrat lucratif pour exploiter un gisement sous-marin. Cela générera d'importants revenus fiscaux, mais au risque d'accidents environnementaux majeurs. Autorisez-vous l'exploitation ?",
     consequence: {
       description: "La pollution pétrolière menace les écosystèmes marins, réduit la biodiversité et cause des morts massives de poissons et d'oiseaux marins.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 300_000_000},
+      ocean_changes: {"% substances toxiques": 3.4},
+      human_changes: {"nb globules blancs par microlitre (de sang)": -1200}
     },
     option: "YesNoChoice"
   },
   {
     id: 9,
     title: "Accélérer le transport international",
-    description: "Pour stimuler le commerce, vous proposez d'augmenter le nombre de cargos et leur vitesse. Cette mesure réduit les délais commerciaux mais augmente la consommation de carburants lourds. L'autorisez-vous ?",
+    description: "Pour stimuler le commerce, une mesure propose d'augmenter le nombre de cargos et leur vitesse. Elle réduit les délais commerciaux mais augmente la consommation de carburants lourds. L'autorisez-vous ?",
     consequence: {
       description: "Une consommation accrue de carburants lourds entraîne plus de déversements et de CO2 dans les océans, aggravant l'acidification et la pollution marine.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 400_000_000},
+      ocean_changes: {"ph": -0.3},
+      human_changes: {"ph sanguin": -0.1}
     },
     option: "YesNoChoice"
   },
@@ -115,9 +116,9 @@ export const allEvents: GeoEvent[] = [
     description: "Une multinationale propose d'investir dans des complexes touristiques sur une zone côtière sensible. Cela boostera votre économie locale, mais au détriment de l'écosystème marin. Acceptez-vous le projet ?",
     consequence: {
       description: "La destruction des mangroves et des récifs coralliens réduit leur capacité à absorber le CO2, tout en mettant en péril la faune locale.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 500_000_000},
+      ocean_changes: {"% CO2 absorbable par les mers": -12.},
+      human_changes: {"% CO2 filtré par les poumons": -3.2}
     },
     option: "YesNoChoice"
   },
@@ -127,9 +128,9 @@ export const allEvents: GeoEvent[] = [
     description: "Une entreprise propose d'extraire des minéraux rares des fonds marins. Cela rapportera énormément d'argent, mais au détriment des habitats profonds. Autorisez-vous cette activité ?",
     consequence: {
       description: "Les activités minières détruisent les habitats benthiques et libèrent des sédiments toxiques qui affectent les organismes marins.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 350_000_000},
+      ocean_changes: {"% substances toxiques": 6.},
+      human_changes: {"nb globules blancs par microlitre (de sang)": -2600}
     },
     option: "YesNoChoice"
   },
@@ -139,9 +140,9 @@ export const allEvents: GeoEvent[] = [
     description: "Les industries pétrochimiques demandent de relancer massivement la production de plastique pour relancer l’économie. Cela entraînera des bénéfices immédiats, mais des impacts environnementaux accrus. Approuvez-vous ?",
     consequence: {
       description: "L'augmentation des plastiques finit par polluer davantage les océans, avec un impact direct sur la faune marine et les chaînes alimentaires.",
-      can_take: {"money" : 5},
-      ocean_changes: ,
-      human_changes: 
+      can_take: {"money" : 160_000_000},
+      ocean_changes: {"% substances toxiques": 5},
+      human_changes:{"nb globules blancs par microlitre (de sang)": -900}
     },
     option: "YesNoChoice"
   },

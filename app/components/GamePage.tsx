@@ -39,7 +39,7 @@ export default function GamePage({ isEarth, switchCallback, stats }: Prop) {
                         </CardTitle>
                         <CardContent>
 
-                            {stats.map((s: SliderData, index: number) => (<div className="flex flex-row" key={index}> <p > {s.name}  </p> <div className="w-1/2 flex mx-5"><StatComponent left_color={s.left_color} right_color={s.right_color} percent={s.data} /> </div></div>))}
+                            {stats.map((s: SliderData, index: number) => (<div className="my-3 grid grid-cols-2" key={index}> <p > {s.name}  </p> <div className="mx-1 mt-2 cols-span-2"><StatComponent left_color={s.left_color} right_color={s.right_color} percent={s.data} /> </div></div>))}
                         </CardContent>
                     </Card>
                     <Card className={"p-2 my-2"}>

@@ -13,17 +13,17 @@ export type ConsequenceSeuil = {
 }
 
 export enum ZoneOcean {
-  ACIDITY,
-  CO2,
-  CORAL_BARRER,
-  STREAM
+  ACIDITY = "Acidite",
+  CO2 = "CO2",
+  CORAL_BARRER = "Barriere de corail",
+  STREAM = "Courrant"
 }
 
 export enum ZoneHuman {
-  VEIN,
-  LUNGS,
-  BONE,
-  HEART
+  VEIN = "Sang",
+  LUNGS = "Poumons",
+  BONE = "Globules Blanc",
+  HEART = "Reseau sanguin"
 }
 
 export interface UpdateResponse {

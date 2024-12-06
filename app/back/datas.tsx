@@ -1,7 +1,7 @@
 import { Stats, GeoEvent} from "@/lib/types";
 
 export const human_stats: Stats = {
-  "ph sanguin": 7.4,
+  "ph sanguin": 4.,
   "% CO2 filtré par les poumons": 98,
   "nb globules blancs par microlitre (de sang)": 9000,
   "bpm": 90,
@@ -34,7 +34,7 @@ export const allEvents: GeoEvent[] = [
     consequence : {
       description: "Le CO2 s'accumule encore dans les océans, acidifiant légérement les océeans.",
       can_take: {"money" : 20_000_000},
-      ocean_changes: {"ph": -0.12},
+      ocean_changes: {"ph": -3.12},
       human_changes: {"ph sanguin": -0.2}
     },
     option: "YesNoChoice"

@@ -10,16 +10,24 @@ import {
     DialogTitle
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import {GeoEvent, ResponseToChoiceEvent, SvgPropBack, SliderData, DialogInfo} from "@/lib/types";
+import {GeoEvent, ResponseToChoiceEvent, SvgPropBack, SliderData, DialogInfo, ConsequenceSeuil} from "@/lib/types";
 import { update } from "./back/update";
+import {Separator} from "@/components/ui/separator";
 
 export default function Home() {
+    // Switch map
     const [isEarth, setIsEarth] = useState(false);
+    // Event dialog
     const [isOpen, setIsOpen] = useState(false);
+    const [geoEvent, setEvent] = useState(null as GeoEvent | null);
+    // Body part
     const [isOpenPart, setIsOpenPart] = useState(false);
     const [part, setPart] = useState(null as DialogInfo | null);
+    // Consequence
+    const [isConsOpen, setIsConsOpen] = useState(false);
+    const [geoCons, setGeoCons] = useState(null as ConsequenceSeuil | null);
+    // other
     const [history, setHistory] = useState([] as string[]);
-    const [geoEvent, setEvent] = useState(null as GeoEvent | null);
     const [svgInfo, setSvgInfo] = useState(null as SvgPropBack | null);
     const [oceanStats, setOceanStats] = useState([] as SliderData[]);
     const [humanStats, setHumanStats] = useState([] as SliderData[]);
@@ -31,8 +39,15 @@ export default function Home() {
             setEvent(res.event);
             setHistory([...[`Event: ${res.event.title}`, ...history]])
             setIsOpen(true);
-        } else {
+        }
+        else {
             setIsOpen(false);
+        }
+        if(res.consequenceSeuil != null) {
+            setGeoCons(res.consequenceSeuil);
+            setIsConsOpen(true);
+        } else {
+            setIsConsOpen(false);
         }
       if (r !== null) {
         setHistory([...[`response: ${r}`, ...history]])
@@ -60,14 +75,14 @@ export default function Home() {
 
     useEffect(() => {
         const id = setInterval(() => {
-            if (!isOpen && !isOpenPart) {
+            if (!isOpen && !isOpenPart && !isConsOpen) {
                 // call Back
                 // update stats
                 handleUpdate(null);
             }
         }, 1000); // each second
         return () => clearInterval(id);
-    }, [isOpen, geoEvent, isOpenPart])
+    }, [isOpen, geoEvent, isOpenPart, isConsOpen])
 
     const accept = () => { handleUpdate("yes"); };
     const refuse = () => { handleUpdate("no"); };
@@ -111,6 +126,23 @@ export default function Home() {
                     </DialogHeader>
                     <DialogFooter>
                         <Button onClick={() => setIsOpenPart(false)}>Fermer</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+            <Dialog open={isConsOpen}>
+                <DialogContent onEscapeKeyDown={event => event.preventDefault()} onPointerDownOutside={event => event.preventDefault()}>
+                    <DialogHeader>
+                        <DialogTitle>Consequence grave</DialogTitle>
+                        <DialogDescription>
+                            <h2 className={"text-xl"}>{geoCons?.humanOrigin || ""}</h2>
+                            <p>{geoCons?.humanProblemAnalogy || ""}</p>
+                            <Separator/>
+                            <h2 className={"text-xl"}>{geoCons?.oceanOrigin || ""}</h2>
+                            <p>{geoCons?.oceanProblem || ""}</p>
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <Button onClick={() => setIsConsOpen(false)}>Ok</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

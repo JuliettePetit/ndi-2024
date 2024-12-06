@@ -219,5 +219,6 @@ export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   isGameOver = curEventIndex >= allEvents.length;
   res.gameOver = isGameOver;
   res.consequenceSeuil = getCriticalState();
+  console.log(res);
   return res;
 }

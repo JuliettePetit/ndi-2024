@@ -5,10 +5,10 @@ import * as SliderPrimitive from "@radix-ui/react-slider"
 
 import { cn } from "@/lib/utils"
 
-interface Props extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>{
+interface Props extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
   left_color: string;
   right_color: string;
-  hide_thumb : string;
+  hide_thumb: string;
 }
 
 const thumb = (hide: boolean) => {
@@ -35,7 +35,7 @@ const ColoredSlider = React.forwardRef<
       <SliderPrimitive.Range className={`absolute h-full bg-primary ${props.right_color}`} />
     </SliderPrimitive.Track>
     {thumb(props.hide_thumb == "true")}
-    </SliderPrimitive.Root>
+  </SliderPrimitive.Root>
 ))
 ColoredSlider.displayName = SliderPrimitive.Root.displayName
 

@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import GamePage from "@/app/components/GamePage";
 import {
     Dialog,
@@ -10,8 +10,8 @@ import {
     DialogHeader,
     DialogTitle
 } from "@/components/ui/dialog";
-import {Button} from "@/components/ui/button";
-import {Event as GeoEvent} from "@/lib/types";
+import { Button } from "@/components/ui/button";
+import { Event as GeoEvent } from "@/lib/types";
 
 export default function Home() {
     const [isEarth, setIsEarth] = useState(false);
@@ -41,14 +41,14 @@ export default function Home() {
         return () => clearInterval(id);
     }, [isOpen, geoEvent])
 
-    const accept = () => {console.log("yes"); setIsOpen(false);};
-    const refuse = () => {console.log("no"); setIsOpen(false);};
-    const ok = () => {console.log("ok"); setIsOpen(false);};
+    const accept = () => { console.log("yes"); setIsOpen(false); };
+    const refuse = () => { console.log("no"); setIsOpen(false); };
+    const ok = () => { console.log("ok"); setIsOpen(false); };
 
     return (
         <div className={"p-2"}>
             <h1 className={"font-extrabold text-2xl"}>{isEarth ? "EARTH" : "HUMAN"}</h1>
-            <GamePage switchState={isEarth} switchCallback={isChek}/>
+            <GamePage isEarth={isEarth} switchCallback={isChek} />
             <Dialog open={isOpen}>
                 <DialogContent onEscapeKeyDown={event => event.preventDefault()} onPointerDownOutside={event => event.preventDefault()}>
                     <DialogHeader>
@@ -60,8 +60,8 @@ export default function Home() {
                     <DialogFooter>
                         {
                             geoEvent?.option == 'YesNoChoice'
-                            ? <><Button variant={"outline"} onClick={refuse}>Non</Button><Button onClick={accept}>Oui</Button></>
-                            : <><Button onClick={ok}>Ok</Button></>
+                                ? <><Button variant={"outline"} onClick={refuse}>Non</Button><Button onClick={accept}>Oui</Button></>
+                                : <><Button onClick={ok}>Ok</Button></>
                         }
                     </DialogFooter>
                 </DialogContent>

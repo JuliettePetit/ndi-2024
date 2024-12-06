@@ -19,3 +19,11 @@ export interface Event {
 
 export interface response {
     event ?: Event}
+
+
+export interface SliderData {
+    data:number,
+    left_color:string,
+    right_color:string,
+    name:string
+}

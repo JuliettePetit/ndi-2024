@@ -1,6 +1,5 @@
 import { BodyPropBack, MapPropBack, ResponseToChoiceEvent, Stats, SvgPropBack, UpdateResponse } from "@/lib/types";
 import { allEvents, human_stats, ocean_stats } from "./datas";
-import HumanBody from "@/components/ui/humanBody";
 
 const add_stats = (stat: Stats, other: Stats) => {
   for (const key in other) {

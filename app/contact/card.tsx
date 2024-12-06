@@ -16,7 +16,7 @@ export default function AboutCard({name,link,picture}: PersonCard) {
     <Card >
       <CardHeader className="flex items-center gap-y-3">
         <Avatar>
-            <Image src={picture} alt={name[0]} width={40} height={40} placeholder="blur" />
+            <Image src={picture} alt={name[0]} width={40} height={40} />
         </Avatar>
         <CardTitle>{name}</CardTitle>
         <Link href={link}>

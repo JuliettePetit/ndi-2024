@@ -263,7 +263,8 @@ const allEvents: Event[] = [
 const resetTimeSecs = 1;
 let curEventIndex = 0;
 let numCalls = 0;
-let isGameOver: boolean = false;
+let isGameOver = false;
+let answeredLastUpdate = true;
 
 function start() {}
 
@@ -283,15 +284,13 @@ function computeStats(): Statistics {
   return "";
 }
 
-// if response, check if 'Ok', 'yes' or 'no'
-// else, it's just a normal update
-// called every second by the user
 function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   const stats = computeStats();
   const res: UpdateResponse = { stats: stats, gameOver: isGameOver };
 
   // check to apply transition
   if (r !== null && curEventIndex > 1) {
+    answeredLastUpdate = true;
     const prevOpt = allEvents[curEventIndex - 1].option;
     if (prevOpt == "YesNoChoice" && (r == 'yes' || r == 'no'))
       applyTransition(r);
@@ -304,7 +303,8 @@ function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   }
 
   // should we send the next event ?
-  if (numCalls >= resetTimeSecs) {
+  if (numCalls >= resetTimeSecs && answeredLastUpdate) {
+    answeredLastUpdate = false;
     numCalls = 0;
     res.event = allEvents[curEventIndex++];
     return res;

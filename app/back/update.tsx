@@ -122,8 +122,8 @@ function getCriticalState(): ConsequenceSeuil | null {
           cs = {
             oceanOrigin: ZoneOcean.ACIDITY,
             humanOrigin: ZoneHuman.VEIN,
-            oceanProblem: '',
-            humanProblemAnalogy: ''
+            oceanProblem: 'Des études montrent progressivement que l\'acidification des océans a un très mauvais impact sur les écosystèmes marins, avec certains animaux marins à squelette qui présentent des anomalies.',
+            humanProblemAnalogy: 'Le corps aussi possède un équilibre acido-basique qui doit rester équilibré. Problème d\'acidose, peut créer de grandes fatigues, voire même des problèmes cardiaques.'
           };
           break;
         }
@@ -131,8 +131,8 @@ function getCriticalState(): ConsequenceSeuil | null {
           cs = {
             oceanOrigin: ZoneOcean.CO2,
             humanOrigin: ZoneHuman.LUNGS,
-            oceanProblem: '',
-            humanProblemAnalogy: ''
+            oceanProblem: 'Les phytoplanctons par la photosynthèse permettent la transformation du CO2 en matière organique et en dioxygène, qui sont tout deux nécessaires à la vie marine. Ce sont les poumons de l\'océan. Sans eux la vie n\'est possible ni sous l\'eau ni sur Terre. La saturtion en CO2 de l\'ocean l\'empêche d\'absorber plus de CO2 qui est rejeté dans l\'atmosphère mais empêche aussi l\'absorbtion d\'autres gazes nécessaires à la vie sous marine.',
+            humanProblemAnalogy: 'Dans le corps humain, si les poumons ne sont plus suffisant pour réguler le CO2 et le dioxygène présent dans le corps, la fatigue est amplifié et l\'attention baisse jusqu\'à l\'évanouissement et le malaise causé par le manque de dioxygènes dans les organes vitaux.'
           };
           break;
         }
@@ -140,8 +140,8 @@ function getCriticalState(): ConsequenceSeuil | null {
           cs = {
             oceanOrigin: ZoneOcean.CORAL_BARRER,
             humanOrigin: ZoneHuman.BONE,
-            oceanProblem: '',
-            humanProblemAnalogy: ''
+            oceanProblem: '+ de catastrophe (impact des mouvements maritimes moins retenus) + destruction écosystème (refuge pour de nombreux poissons) + grosse source d\'O2 réduite, ...',
+            humanProblemAnalogy: 'Protection Immunitaire - Maladies'
           };
           break;
         }
@@ -149,8 +149,12 @@ function getCriticalState(): ConsequenceSeuil | null {
           cs = {
             oceanOrigin: ZoneOcean.STREAM,
             humanOrigin: ZoneHuman.HEART,
-            oceanProblem: '',
-            humanProblemAnalogy: ''
+            oceanProblem: 'circulation océanique impacte la régulation du climat. A cause du réchauffement climatique, les calottes glaciaires augmentent la quantité d\'eau douce dans l\'océan. Cela ralentit la circulation globale des flux maritimes en empêchant la formation d\'eau profonde.\n' +
+              '\n' +
+              'De plus,\n' +
+              '\n' +
+              'Les conséquences son très mauvaises, car cela diminuerait le carbone et la chaleur absorbés par les océans, et donc accélérer le réchauffement climatique. De plus, Une boucle sans fin.',
+            humanProblemAnalogy: 'On peut comparer les flux maritimes avec les flux sanguins du corps. Si le débit de circulation sanguine du corps est réduit, cela peut entraîner des problèmes cardiaques et des complications.'
           };
           break;
         }

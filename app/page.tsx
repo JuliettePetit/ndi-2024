@@ -1,11 +1,17 @@
-import { Switch } from '@/components/ui/switch';
+"use client"
+
+import {useState} from "react";
+import GamePage from "@/app/components/GamePage";
 import StatComponent from './components/StatComponent';
 
 export default function Home() {
-  return (
-    <div>
-      <Switch></Switch>
-      <StatComponent left_color='bg-[#32CD32]' right_color='bg-[#F699CD]' percent={10}/>
+    const [isEarth, setIsEarth] = useState(false);
+    const isChek: ((checked: boolean) => void) = (s: boolean) => setIsEarth(s);
+    return (
+        <div className={"p-2"}>
+            <h1 className={"font-extrabold text-2xl"}>{isEarth ? "EARTH" : "HUMAN"}</h1>
+            <GamePage switchState={isEarth} switchCallback={isChek}/>
+        <StatComponent left_color='bg-[#32CD32]' right_color='bg-[#F699CD]' percent={10}/>
     </div>
-  );
+    );
 }

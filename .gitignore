@@ -40,3 +40,5 @@ yarn-error.log*
 next-env.d.ts
 
 public/VIDEO-PODCAST
+.idea/
+bun.lockb

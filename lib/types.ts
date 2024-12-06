@@ -30,9 +30,6 @@ export interface Stats {
   [id: string]: number;
 }
 
-export interface response {
-    event ?: Event}
-
 
 export interface SliderData {
     data:number,

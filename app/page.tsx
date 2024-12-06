@@ -10,13 +10,15 @@ import {
     DialogTitle
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { GeoEvent, ResponseToChoiceEvent } from "@/lib/types";
+import { GeoEvent, ResponseToChoiceEvent, SliderData } from "@/lib/types";
 import { update } from "./back/update";
 
 export default function Home() {
     const [isEarth, setIsEarth] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [geoEvent, setEvent] = useState(null as GeoEvent | null);
+    const [oceanStats, setOceanStats] = useState([] as SliderData[]);
+    const [humanStats, setHumanStats] = useState([] as SliderData[]);
     const isChek: ((checked: boolean) => void) = (s: boolean) => setIsEarth(s);
 
     function handleUpdate(r: ResponseToChoiceEvent | null) {
@@ -27,10 +29,22 @@ export default function Home() {
         } else {
             setIsOpen(false);
         }
-
-        console.log(res.event);
-        console.log(isOpen);
-
+        setOceanStats(Object
+            .keys(res.ocean_stats)
+            .map((k) => ({
+                left_color: "bg-gray-100",
+                right_color: "bg-blue-200",
+                data: res.ocean_stats[k],
+                name: k
+            } as SliderData)));
+        setHumanStats(Object
+            .keys(res.human_stats)
+            .map((k) => ({
+                left_color: "bg-gray-100",
+                right_color: "bg-red-200",
+                data: res.human_stats[k],
+                name: k
+            } as SliderData)));
     }
 
 
@@ -52,7 +66,7 @@ export default function Home() {
     return (
         <div className={"p-2"}>
             <h1 className={"font-extrabold text-2xl"}>{isEarth ? "EARTH" : "HUMAN"}</h1>
-            <GamePage isEarth={isEarth} switchCallback={isChek} />
+            <GamePage isEarth={isEarth} switchCallback={isChek} stats={isEarth ? oceanStats : humanStats} />
             <Dialog open={isOpen}>
                 <DialogContent onEscapeKeyDown={event => event.preventDefault()} onPointerDownOutside={event => event.preventDefault()}>
                     <DialogHeader>

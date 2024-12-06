@@ -3,17 +3,16 @@ import { PageSwitch } from "@/app/components/PageSwitch";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
 import StatComponent from "@/app/components/StatComponent";
 import { SliderData } from "@/lib/types";
 
 interface Prop {
     isEarth: boolean;
     switchCallback: (state: boolean) => void;
+    stats: SliderData[]
 }
 
-export default function GamePage({ isEarth, switchCallback }: Prop) {
-    const [stats, setStats] = useState([{ left_color: "bg-gray-100", right_color: "bg-red-200", data: 28, name: "temperature" }] as SliderData[]);
+export default function GamePage({ isEarth, switchCallback, stats }: Prop) {
     const history = Array.from({ length: 50 }).map(
         (_, i, a) => `action ${a.length - i}`
     )

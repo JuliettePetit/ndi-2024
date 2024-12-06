@@ -29,13 +29,13 @@ export default function Home() {
         const res = update(r);
         if (res.event != null) {
             setEvent(res.event);
-            setHistory([...[`Event: ${res.event.title}`, ...history]])
+            setHistory([...[`Event: #${res.event.id} - ${res.event.title}`, ...history]])
             setIsOpen(true);
         } else {
             setIsOpen(false);
         }
       if (r !== null) {
-        setHistory([...[`response: ${r}`, ...history]])
+        setHistory([...[`Reponse: ${r}`, ...history]])
         }
         setOceanStats(Object
             .keys(res.ocean_stats)

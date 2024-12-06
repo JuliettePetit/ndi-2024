@@ -24,9 +24,9 @@ const limit_stats : Stats = { // temp
   "delta température flux marins": 1
 }
 
-const resetTimeSecs = 3;
+const resetTimeSecs = 15;
 let curEventIndex = 0;
-let numCalls = 0;
+let numCalls = resetTimeSecs;
 let isGameOver = false;
 let answeredLastUpdate = true;
 

@@ -3,6 +3,7 @@ import {Card, CardContent, CardTitle} from "@/components/ui/card";
 import {ScrollArea} from "@/components/ui/scroll-area"
 import {Separator} from "@/components/ui/separator";
 import {Key} from "react";
+import StatComponent from "@/app/components/StatComponent";
 
 interface Prop {
     switchState: boolean;
@@ -33,13 +34,16 @@ export default function GamePage({switchState, switchCallback}: Prop) {
                     <Card className={"p-2"}>
                         <CardTitle>
                             Statistiques
+
                         </CardTitle>
                         <CardContent>
+
                         </CardContent>
                     </Card>
                     <Card className={"p-2 my-2"}>
                         <CardTitle>
                             Historique
+
                         </CardTitle>
                         <CardContent>
                             <ScrollArea className={"h-72"}>

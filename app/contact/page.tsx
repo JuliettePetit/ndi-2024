@@ -8,37 +8,37 @@ const persons: PersonCard[] = [
   {
     name: "Mathis",
     link: "https://github.com/Asolmele",
-    picture: "people/raccoon.jpg",
+    picture: "/people/raccoon.jpg",
   },
   {
     name: "Toum",
     link: "https://github.com/tom-fourcaudot",
-    picture: "people/toum.jpeg",
+    picture: "/people/toum.jpeg",
   },
   {
     name: "Leo",
     link: "https://github.com/Leikoe",
-    picture: "people/leo.png",
+    picture: "/people/leo.png",
   },
   {
     name: "Juju",
     link: "https://github.com/JuliettePetit",
-    picture: "people/aeda.jpeg",
+    picture: "/people/aeda.jpeg",
   },
   {
     name: "Axel",
     link: "https://github.com/Neeko-strong-tomato",
-    picture: "people/axel.png",
+    picture: "/people/axel.png",
   },
   {
     name: "Tanguy",
     link: "https://github.com/TDecabrat",
-    picture: "people/tanguy.png",
+    picture: "/people/tanguy.png",
   },
   {
     name: "Wanchai",
     link: "https://github.com/Wanchai290",
-    picture: "people/wanchai.jpeg",
+    picture: "/people/wanchai.jpeg",
   },
 
 ]

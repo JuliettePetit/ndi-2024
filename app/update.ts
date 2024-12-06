@@ -30,35 +30,61 @@ const allEvents: Event[] = [
   }
 ];
 
-const resetTimeSecs = 10;
-let lastChoiceTime: number;
-let curEventIndex: number;
+const resetTimeSecs = 1;
+let curEventIndex = 0;
+let numCalls = 0;
+let isGameOver: boolean = false;
 
-function start() {
-  lastChoiceTime = Date.now();
-  curEventIndex = 0;
-}
+function start() {}
 
 function applyTransition(choice: ResponseToChoiceEvent) {
   // tree thingy for events
 }
 
+type Statistics = "";
+
+interface UpdateResponse {
+  event?: Event,
+  stats: Statistics
+  gameOver: boolean
+}
+
+function computeStats(): Statistics {
+  return "";
+}
+
 // if response, check if 'Ok', 'yes' or 'no'
 // else, it's just a normal update
-function update(r: ResponseToChoiceEvent | null): Event | null {
-  if (r !== null) {
+// called every second by the user
+function update(r: ResponseToChoiceEvent | null): UpdateResponse {
+  const stats = computeStats();
+  const res: UpdateResponse = { stats: stats, gameOver: isGameOver };
+
+  // check to apply transition
+  if (r !== null && curEventIndex > 1) {
     const prevOpt = allEvents[curEventIndex - 1].option;
     if (prevOpt == "YesNoChoice" && (r == 'yes' || r == 'no'))
       applyTransition(r);
     else if (prevOpt == "AcceptChoice" && r == "ok")
       applyTransition(r);
-    else
-      return null; // bro this is wrong state
+    else {
+      isGameOver = true;
+      return res; // bro this is wrong state
+    }
   }
 
-  if (Date.now() - lastChoiceTime > resetTimeSecs * 1000) {
-    return allEvents[curEventIndex++];
-  } else { return null; }
+  // should we send the next event ?
+  if (numCalls >= resetTimeSecs) {
+    numCalls = 0;
+    res.event = allEvents[curEventIndex++];
+    return res;
+  } else {
+    numCalls++;
+  }
+
+  isGameOver = curEventIndex >= allEvents.length;
+  res.gameOver = isGameOver;
+  return res;
 }
 
 export type {

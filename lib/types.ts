@@ -9,6 +9,7 @@ export interface UpdateResponse {
   ocean_stats: Stats
   human_stats: Stats
   gameOver: boolean
+  svgs: SvgPropBack
 }
 
 export interface GeoEvent {
@@ -32,8 +33,37 @@ export interface Stats {
 
 
 export interface SliderData {
-    data:number,
-    left_color:string,
-    right_color:string,
-    name:string
+  data: number,
+  left_color: string,
+  right_color: string,
+  name: string
+}
+
+interface SvgPartBack{
+    color?:string; // Hexcode - XXXXXX form, no #
+    dialogInfo: DialogInfo;
+}
+
+export interface MapPropBack{
+    acidity:SvgPartBack;
+    CO2:SvgPartBack;
+    coralBarrer:SvgPartBack;
+    stream:SvgPartBack;
+}
+
+export interface BodyPropBack{
+    bone:SvgPartBack;
+    vein:SvgPartBack;
+    lungs:SvgPartBack;
+    heart:SvgPartBack;
+}
+
+export interface DialogInfo {
+    title: string;
+    description: string;
+}
+
+export interface SvgPropBack {
+    body: BodyPropBack;
+    map: MapPropBack;
 }

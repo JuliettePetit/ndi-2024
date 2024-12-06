@@ -3,7 +3,7 @@ import {
 } from "@/components/ui/card"
 import DlIcon from "@/components/ui/dlIcon";
 export default function Podcasts() {
-    let arr = [
+    const arr = [
         {
             path: "VIDEO-PODCAST/FREDERIC LE MOIGNE/Frederic Le Moigne - Part 1-SD 480p.mov",
             title: "Frederic Le Moigne - Part 1",

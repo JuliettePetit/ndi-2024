@@ -1,5 +1,5 @@
 import { PersonCard } from "./models/Card.model";
-import { Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function AboutCard({name,link,picture}: PersonCard) {
@@ -15,8 +16,7 @@ export default function AboutCard({name,link,picture}: PersonCard) {
     <Card >
       <CardHeader className="flex items-center gap-y-3">
         <Avatar>
-          <AvatarImage src={picture} />
-          <AvatarFallback>{name[0]}</AvatarFallback>
+            <Image src={picture} alt={name[0]} width={40} height={40} placeholder="blur" />
         </Avatar>
         <CardTitle>{name}</CardTitle>
         <Link href={link}>

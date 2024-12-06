@@ -1,5 +1,4 @@
 "use client"
-
 import {useEffect, useState} from "react";
 import GamePage from "@/app/components/GamePage";
 import {

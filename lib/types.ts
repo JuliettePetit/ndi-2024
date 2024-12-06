@@ -3,11 +3,11 @@ export type TypeOfChoice = 'YesNoChoice' | 'AcceptChoice';
 export type YesNoChoice = 'yes' | 'no';
 export type AcceptChoice = 'ok';
 export type ResponseToChoiceEvent = YesNoChoice | AcceptChoice;
-export type Statistics = "";
 
 export interface UpdateResponse {
   event?: GeoEvent,
-  stats: Statistics
+  ocean_stats: Stats
+  human_stats: Stats
   gameOver: boolean
 }
 

@@ -34,6 +34,8 @@ export interface Stats {
 
 export interface SliderData {
   data: number,
+  min: number,
+  max: number,
   left_color: string,
   right_color: string,
   name: string

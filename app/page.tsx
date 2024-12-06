@@ -18,6 +18,7 @@ export default function Home() {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenPart, setIsOpenPart] = useState(false);
     const [part, setPart] = useState(null as DialogInfo | null);
+    const [history, setHistory] = useState([] as string[]);
     const [geoEvent, setEvent] = useState(null as GeoEvent | null);
     const [svgInfo, setSvgInfo] = useState(null as SvgPropBack | null);
     const [oceanStats, setOceanStats] = useState([] as SliderData[]);
@@ -28,9 +29,13 @@ export default function Home() {
         const res = update(r);
         if (res.event != null) {
             setEvent(res.event);
+            setHistory([...[`Event: ${res.event.title}`, ...history]])
             setIsOpen(true);
         } else {
             setIsOpen(false);
+        }
+      if (r !== null) {
+        setHistory([...[`response: ${r}`, ...history]])
         }
         setOceanStats(Object
             .keys(res.ocean_stats)
@@ -38,7 +43,8 @@ export default function Home() {
                 left_color: "bg-gray-100",
                 right_color: "bg-blue-200",
                 data: res.ocean_stats[k],
-                name: k
+                name: k,
+
             } as SliderData)));
         setHumanStats(Object
             .keys(res.human_stats)
@@ -70,12 +76,13 @@ export default function Home() {
     return (
         <div className={"p-2"}>
             <h1 className={"font-extrabold text-2xl"}>{isEarth ? "TERRE" : "HUMAIN"}</h1>
-            <GamePage isEarth={isEarth}
-                      switchCallback={isChek}
-                      stats={isEarth ? oceanStats : humanStats}
-                      svgs={svgInfo}
-                      setPart={setPart}
-                      setOpenPart={setIsOpenPart}
+        <GamePage isEarth={isEarth}
+            switchCallback={isChek}
+            stats={isEarth ? oceanStats : humanStats}
+            svgs={svgInfo}
+            setPart={setPart}
+            setOpenPart={setIsOpenPart}
+            history={history}
             />
             <Dialog open={isOpen}>
                 <DialogContent onEscapeKeyDown={event => event.preventDefault()} onPointerDownOutside={event => event.preventDefault()}>

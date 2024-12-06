@@ -15,12 +15,10 @@ interface Prop {
     svgs: SvgPropBack | null;
     setPart: (part: DialogInfo | null) => void;
     setOpenPart: (state: boolean) => void;
+  history: string[];
 }
 
-export default function GamePage({ isEarth, switchCallback, stats, svgs, setPart, setOpenPart }: Prop) {
-    const history = Array.from({ length: 50 }).map(
-        (_, i, a) => `action ${a.length - i}`
-    )
+export default function GamePage({ isEarth, switchCallback, stats, svgs, setPart, setOpenPart, history }: Prop) {
     const openPart = (info: DialogInfo | undefined) => {setPart(info || null); setOpenPart(true);}
     return (
         <div>

@@ -30,7 +30,7 @@ export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   const res: UpdateResponse = { ocean_stats: ocean_stats, human_stats: human_stats, gameOver: isGameOver };
 
   // check to apply transition
-  if (r !== null && curEventIndex > 1 && canMakeChoice(r)) {
+  if (r !== null && curEventIndex > 0 && canMakeChoice(r)) {
     answeredLastUpdate = true;
     const prevOpt = allEvents[curEventIndex - 1].option;
     if (prevOpt == "YesNoChoice" && (r == 'yes' || r == 'no'))
@@ -44,6 +44,9 @@ export function update(r: ResponseToChoiceEvent | null): UpdateResponse {
   }
 
   // should we send the next event ?
+  console.log("in update");
+  console.log(answeredLastUpdate);
+  console.log(numCalls);
   if (numCalls >= resetTimeSecs && answeredLastUpdate) {
     answeredLastUpdate = false;
     numCalls = 0;

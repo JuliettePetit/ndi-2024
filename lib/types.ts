@@ -32,6 +32,7 @@ export interface UpdateResponse {
   human_stats: Stats
   gameOver: boolean
   consequenceSeuil?: ConsequenceSeuil
+  svgs: SvgPropBack
 }
 
 export interface GeoEvent {
@@ -51,4 +52,41 @@ export interface Consequence {
 
 export interface Stats {
   [id: string]: number;
+}
+
+
+export interface SliderData {
+  data: number,
+  left_color: string,
+  right_color: string,
+  name: string
+}
+
+interface SvgPartBack{
+    color?:string; // Hexcode - XXXXXX form, no #
+    dialogInfo: DialogInfo;
+}
+
+export interface MapPropBack{
+    acidity:SvgPartBack;
+    CO2:SvgPartBack;
+    coralBarrer:SvgPartBack;
+    stream:SvgPartBack;
+}
+
+export interface BodyPropBack{
+    bone:SvgPartBack;
+    vein:SvgPartBack;
+    lungs:SvgPartBack;
+    heart:SvgPartBack;
+}
+
+export interface DialogInfo {
+    title: string;
+    description: string;
+}
+
+export interface SvgPropBack {
+    body: BodyPropBack;
+    map: MapPropBack;
 }

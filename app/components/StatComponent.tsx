@@ -1,3 +1,4 @@
+"use client"
 import { ColoredSlider } from "./ColoredSlider";
 
 interface Prop {
@@ -6,6 +7,6 @@ interface Prop {
   percent: number;
 }
 
-export default function StatComponent({left_color, right_color, percent}: Prop) {
-  return <ColoredSlider disabled hide_thumb="true" left_color={left_color} right_color={right_color} defaultValue={[percent]} max={100} step={1}/>
+export default function StatComponent({ left_color, right_color, percent }: Prop) {
+  return <ColoredSlider disabled hide_thumb="true" left_color={left_color} right_color={right_color} value={[percent]} defaultValue={[0]} max={100} step={1} />
 }

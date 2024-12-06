@@ -31,6 +31,11 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
+        <div className="mt-[200px] w-full text-center">
+          <p className="text-yellow-500">
+            Disclaimer: Les données présentent dans le jeu se veulent représentatives mais ne reflètent pas la réalité.
+          </p>
+        </div>
       </body>
     </html>
   );

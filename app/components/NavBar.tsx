@@ -9,8 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 const NavLinks = [
     { id: 1, name: 'Home', path: '/' },
     { id: 2, name: 'Podcasts', path: '/podcasts' },
-    { id: 3, name: 'Contact', path: '/contact' },
-    { id: 4, name: 'Défi Sopra', path: '/Bad_Input'}
+    { id: 3, name: 'Contact', path: '/contact' }
 ];
 
 export default function NavBar() {

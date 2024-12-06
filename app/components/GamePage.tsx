@@ -1,28 +1,30 @@
-import {PageSwitch} from "@/app/components/PageSwitch";
-import {Card, CardContent, CardTitle} from "@/components/ui/card";
-import {ScrollArea} from "@/components/ui/scroll-area"
-import {Separator} from "@/components/ui/separator";
-import {Key} from "react";
+"use client"
+import { PageSwitch } from "@/app/components/PageSwitch";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Separator } from "@/components/ui/separator";
 import StatComponent from "@/app/components/StatComponent";
+import { SliderData } from "@/lib/types";
 
 interface Prop {
-    switchState: boolean;
+    isEarth: boolean;
     switchCallback: (state: boolean) => void;
+    stats: SliderData[]
 }
 
-export default function GamePage({switchState, switchCallback}: Prop) {
+export default function GamePage({ isEarth, switchCallback, stats }: Prop) {
     const history = Array.from({ length: 50 }).map(
         (_, i, a) => `action ${a.length - i}`
     )
     return (
         <div>
-            <div className={"gap-2 grid grid-cols-1 lg:grid-cols-2"}>
+            <div className={"gap-2 grid grid-cols-1 lg:grid-cols-3"}>
                 {/* left section */}
-                <div>
+                <div className="col-span-2">
 
                     <Card>
                         <CardTitle className={"flex justify-center pt-2"}>
-                            <PageSwitch onCheckedChange={switchCallback} defaultChecked={switchState}/>
+                            <PageSwitch onCheckedChange={switchCallback} defaultChecked={isEarth} />
                         </CardTitle>
                         <CardContent>
                             <p>svg</p>
@@ -32,26 +34,26 @@ export default function GamePage({switchState, switchCallback}: Prop) {
                 {/* right section */}
                 <div>
                     <Card className={"p-2"}>
-                        <CardTitle>
+                        <CardTitle className="mb-5">
                             Statistiques
-
                         </CardTitle>
                         <CardContent>
 
+                            {stats.map((s: SliderData, index: number) => (<div className="my-3 grid grid-cols-2" key={index}> <p > {s.name}  </p> <div className="mx-1 mt-2 cols-span-2"><StatComponent left_color={s.left_color} right_color={s.right_color} percent={s.data} /> </div></div>))}
                         </CardContent>
                     </Card>
                     <Card className={"p-2 my-2"}>
-                        <CardTitle>
+                        <CardTitle className="mb-5">
                             Historique
 
                         </CardTitle>
                         <CardContent>
                             <ScrollArea className={"h-72"}>
-                                {history.map((it:string) => (
-                                        <div key={it}>
-                                            {it}
-                                            <Separator/>
-                                        </div>
+                                {history.map((it: string) => (
+                                    <div key={it}>
+                                        {it}
+                                        <Separator />
+                                    </div>
                                 ))}
                             </ScrollArea>
                         </CardContent>

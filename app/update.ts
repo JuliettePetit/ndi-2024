@@ -82,8 +82,8 @@ const allEvents: Event[] = [
     id: 7,
     name: "Pêcherie durable ou rendement maximal",
     description: "Les pêcheurs demandent d'exploiter davantage les ressources marines pour répondre à la demande croissante. Acceptez-vous d'autoriser la surpêche ?",
-    consesquence: {
-      human_desc: "Les coûts alimentaires diminuent, mais à long terme, les populations de poissons pourraient s'effondrer, rendant votre régime alimentaire moins varié.",
+    consesquence: { 
+      human_desc: "Les coûts alimentaires diminuent, mais à long terme, les populations de poissons pourraient s'effondrer, rendant votre régime alimentaire moins varié, ce qui vous engendre des carences alimentaires..",
       ocean_desc: "La biodiversité marine diminue, et les déséquilibres dans les écosystèmes marins aggravent leur fragilité."
     },
     option: "YesNoChoice"

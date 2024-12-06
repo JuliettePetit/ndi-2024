@@ -10,13 +10,14 @@ import {
     DialogTitle
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { GeoEvent, ResponseToChoiceEvent, SliderData } from "@/lib/types";
+import {GeoEvent, ResponseToChoiceEvent, SvgPropBack, SliderData} from "@/lib/types";
 import { update } from "./back/update";
 
 export default function Home() {
     const [isEarth, setIsEarth] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [geoEvent, setEvent] = useState(null as GeoEvent | null);
+    const [svgInfo, setSvgInfo] = useState(null as SvgPropBack | null);
     const [oceanStats, setOceanStats] = useState([] as SliderData[]);
     const [humanStats, setHumanStats] = useState([] as SliderData[]);
     const isChek: ((checked: boolean) => void) = (s: boolean) => setIsEarth(s);

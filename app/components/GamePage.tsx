@@ -4,7 +4,9 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator";
 import StatComponent from "@/app/components/StatComponent";
-import { SliderData } from "@/lib/types";
+import HumanBody from "@/components/ui/HumanBody";
+import EarthBody from "@/components/ui/EarthBody";
+import {SliderData} from "@/lib/types";
 
 interface Prop {
     isEarth: boolean;
@@ -27,7 +29,9 @@ export default function GamePage({ isEarth, switchCallback, stats }: Prop) {
                             <PageSwitch onCheckedChange={switchCallback} defaultChecked={isEarth} />
                         </CardTitle>
                         <CardContent>
-                            <p>svg</p>
+                            {/*{isEarth*/}
+                            {/*? <EarthBody coralBarrer={} stream={} CO2={} acidity={}/>*/}
+                            {/*: <HumanBody bone={} heart={} lungs={} vein={}/>}*/}
                         </CardContent>
                     </Card>
                 </div>

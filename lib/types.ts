@@ -67,3 +67,32 @@ export interface SvgPropBack {
     body: BodyPropBack;
     map: MapPropBack;
 }
+
+interface SvgPartBack{
+    color?:string; // Hexcode - XXXXXX form, no #
+    dialogInfo: DialogInfo;
+}
+
+export interface MapPropBack{
+    acidity:SvgPartBack;
+    CO2:SvgPartBack;
+    coralBarrer:SvgPartBack;
+    stream:SvgPartBack;
+}
+
+export interface BodyPropBack{
+    bone:SvgPartBack;
+    vein:SvgPartBack;
+    lungs:SvgPartBack;
+    heart:SvgPartBack;
+}
+
+export interface DialogInfo {
+    title: string;
+    description: string;
+}
+
+export interface SvgPropBack {
+    body: BodyPropBack;
+    map: MapPropBack;
+}

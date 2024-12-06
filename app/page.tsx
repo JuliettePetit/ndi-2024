@@ -2,7 +2,6 @@
 
 import {useState} from "react";
 import GamePage from "@/app/components/GamePage";
-import StatComponent from './components/StatComponent';
 
 export default function Home() {
     const [isEarth, setIsEarth] = useState(false);
@@ -11,7 +10,6 @@ export default function Home() {
         <div className={"p-2"}>
             <h1 className={"font-extrabold text-2xl"}>{isEarth ? "EARTH" : "HUMAN"}</h1>
             <GamePage switchState={isEarth} switchCallback={isChek}/>
-        <StatComponent left_color='bg-[#32CD32]' right_color='bg-[#F699CD]' percent={10}/>
-    </div>
+        </div>
     );
 }
